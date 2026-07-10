@@ -67,7 +67,7 @@ with customer_touches as (
     from ecom.orders o
     left join first_touch ft
         on o.customer_id = ft.customer_id
-    where o.status <> 'cancelled'
+    where lower(o.status) <> 'cancelled'
     group by
         coalesce(ft.channel, 'direct')
 )
@@ -81,7 +81,7 @@ with customer_touches as (
     from ecom.orders o
     left join last_touch lt
         on o.customer_id = lt.customer_id
-    where o.status <> 'cancelled'
+    where lower(o.status) <> 'cancelled'
     group by
         coalesce(lt.channel, 'direct')
 )

@@ -132,6 +132,7 @@
 
 ## D. ER Diagram
 
+```mermaid
 erDiagram
     customers          ||--o{ orders : places
     orders             ||--|{ order_items : contains
@@ -149,6 +150,7 @@ erDiagram
     sessions           ||--o{ attribution_touches : has
     attribution_touches }o--o| attribution_campaigns : maps_via_bridge
     attribution_campaigns }o--|| marketing_campaigns : refs
+ ```
     
 ## E. Five Things That Surprised Me
 

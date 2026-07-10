@@ -8,16 +8,28 @@
 
 with daily_summary as (
     select
-        date_trunc('day', created_at)::date           as order_date
-      , sum(total)                                    as revenue
-      , count(*)                                      as orders
+        date_trunc('day', o.created_at)::date       as order_date
+
+      , sum(o.total) filter (
+            where lower(o.status) <> 'cancelled'
+              and lower(o.payment_status) = 'paid'
+        )                                           as revenue
+
       , count(*) filter (
-            where payment_status = 'paid'
-        )                                              as paid_orders
+            where lower(o.status) <> 'cancelled'
+              and lower(o.payment_status) = 'paid'
+        )                                           as orders
+
       , count(*) filter (
-            where status = 'cancelled'
-        )                                              as cancelled_orders
-    from ecom.orders
+            where lower(o.payment_status) = 'paid'
+        )                                           as paid_orders
+
+      , count(*) filter (
+            where lower(o.status) = 'cancelled'
+        )                                           as cancelled_orders
+
+    from ecom.orders o
+
     group by
         1
 )

@@ -19,7 +19,7 @@ with customer_ltv as (
     from ecom.customers c
     join ecom.orders o
         on c.customer_id = o.customer_id
-    where o.status <> 'cancelled'
+    where lower(o.status) <> 'cancelled'
     group by
         c.customer_id
 )

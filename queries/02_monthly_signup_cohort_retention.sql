@@ -17,7 +17,7 @@ with customer_signups as (
     from ecom.customers c
     left join ecom.orders o
         on c.customer_id = o.customer_id
-       and o.status <> 'cancelled'
+       and lower(o.status) <> 'cancelled'
 )
 
 , monthly_difference as (
