@@ -2,54 +2,54 @@
 
 | table | approx_rows | what it stores | grain |
 |---|---:|---|---|
-| addresses |  | reusable address records such as shipping or billing locations | one row per address |
-| attribution_campaigns |  | bridge or mapping table between attribution data and campaign entities | one row per attribution campaign mapping |
-| attribution_touches |  | marketing touchpoints tied to sessions, customers, or orders for attribution analysis | one row per attribution touch |
-| brands |  | brand master data for products | one row per brand |
-| categories |  | product category master data | one row per category |
-| collection_products |  | mapping between collections and products | one row per collection-product pair |
+| addresses | 16000 | reusable address records such as shipping or billing locations | one row per address |
+| attribution_campaigns | 38405 | bridge or mapping table between attribution data and campaign entities | one row per attribution campaign mapping |
+| attribution_touches | 100000 | marketing touchpoints tied to sessions, customers, or orders for attribution analysis | one row per attribution touch |
+| brands | 120 | brand master data for products | one row per brand |
+| categories | 18 | product category master data | one row per category |
+| collection_products | 0 | mapping between collections and products | one row per collection-product pair |
 | collections | 0 | collection metadata for grouped product sets | one row per collection |
-| consents |  | customer consent or preference records | one row per consent event or consent state |
-| coupons |  | coupon definitions and codes used in promotions | one row per coupon |
-| customer_addresses |  | link between customers and saved addresses | one row per customer-address relationship |
-| customer_segments |  | segment definitions used for marketing or CRM targeting | one row per segment |
-| customers |  | customer master data and signup-level information | one row per customer |
-| devices |  | device reference or tracked device-level metadata | one row per device |
-| experiment_assignments |  | assignments of users or sessions into experiments/variants | one row per assignment |
-| experiment_variants |  | variant definitions for experiments | one row per variant |
-| experiments |  | A/B test or experiment definitions | one row per experiment |
-| inventory_items |  | inventory tracked at SKU or stock-item level | one row per inventory item |
-| inventory_movements |  | stock increases, decreases, or transfers over time | one row per inventory movement |
-| loyalty_accounts |  | loyalty program account records for customers | one row per loyalty account |
-| loyalty_transactions |  | earn, burn, or adjustment events in loyalty balances | one row per loyalty transaction |
-| marketing_campaigns |  | campaign master data for marketing initiatives | one row per marketing campaign |
-| notifications |  | outbound communication records such as sends or alerts | one row per notification |
-| order_items |  | line items contained within customer orders | one row per order item |
-| order_refunds |  | order-level refund linkage or breakdown data | one row per order refund record |
-| order_status_history |  | historical changes in order status over time | one row per order status change |
-| orders |  | order-level commercial and lifecycle data | one row per order |
-| payment_intents |  | payment attempt or intent records linked to orders | one row per payment intent |
-| payment_methods |  | payment method reference data | one row per payment method |
-| payment_transactions |  | transaction-level payment attempts, captures, or failures | one row per payment transaction |
-| price_lists |  | named pricing schedules or catalogs | one row per price list |
-| prices |  | product or variant pricing records | one row per price record |
-| product_images |  | image metadata associated with products | one row per product image |
-| product_reviews |  | customer-submitted product reviews and ratings | one row per review |
-| product_variants |  | SKU- or variant-level product records | one row per product variant |
-| products |  | product master data | one row per product |
-| promotion_rules |  | rule logic behind promotions or discounts | one row per promotion rule |
-| promotions |  | promotion definitions and campaign offers | one row per promotion |
-| refunds |  | refund transactions issued against orders | one row per refund |
-| return_items |  | item-level detail for returned products | one row per returned item |
-| return_reasons |  | return reason reference data | one row per return reason |
-| return_requests |  | return requests initiated by customers | one row per return request |
-| segment_memberships |  | customer membership in segments | one row per customer-segment membership |
-| session_channels |  | derived or curated acquisition channel per session | one row per session |
+| consents | 0 | customer consent or preference records | one row per consent event or consent state |
+| coupons | 50 | coupon definitions and codes used in promotions | one row per coupon |
+| customer_addresses | 16000 | link between customers and saved addresses | one row per customer-address relationship |
+| customer_segments | 10 | segment definitions used for marketing or CRM targeting | one row per segment |
+| customers | 10000 | customer master data and signup-level information | one row per customer |
+| devices | 85168 | device reference or tracked device-level metadata | one row per device |
+| experiment_assignments | 140670 | assignments of users or sessions into experiments/variants | one row per assignment |
+| experiment_variants | 12 | variant definitions for experiments | one row per variant |
+| experiments | 6 | A/B test or experiment definitions | one row per experiment |
+| inventory_items | 2000 | inventory tracked at SKU or stock-item level | one row per inventory item |
+| inventory_movements | 30207 | stock increases, decreases, or transfers over time | one row per inventory movement |
+| loyalty_accounts | 3000 | loyalty program account records for customers | one row per loyalty account |
+| loyalty_transactions | 21475 | earn, burn, or adjustment events in loyalty balances | one row per loyalty transaction |
+| marketing_campaigns | 100 | campaign master data for marketing initiatives | one row per marketing campaign |
+| notifications | 6856 | outbound communication records such as sends or alerts | one row per notification |
+| order_items | 81806 | line items contained within customer orders | one row per order item |
+| order_refunds | 260 | order-level refund linkage or breakdown data | one row per order refund record |
+| order_status_history | 158414 | historical changes in order status over time | one row per order status change |
+| orders | 40000 | order-level commercial and lifecycle data | one row per order |
+| payment_intents | 40000 | payment attempt or intent records linked to orders | one row per payment intent |
+| payment_methods | 5 | payment method reference data | one row per payment method |
+| payment_transactions | 40034 | transaction-level payment attempts, captures, or failures | one row per payment transaction |
+| price_lists | 2 | named pricing schedules or catalogs | one row per price list |
+| prices | 24180 | product or variant pricing records | one row per price record |
+| product_images | 7188 | image metadata associated with products | one row per product image |
+| product_reviews | 8000 | customer-submitted product reviews and ratings | one row per review |
+| product_variants | 12090 | SKU- or variant-level product records | one row per product variant |
+| products | 4000 | product master data | one row per product |
+| promotion_rules | 30 | rule logic behind promotions or discounts | one row per promotion rule |
+| promotions | 20 | promotion definitions and campaign offers | one row per promotion |
+| refunds | 260 | refund transactions issued against orders | one row per refund |
+| return_items | 2004 | item-level detail for returned products | one row per returned item |
+| return_reasons | 8 | return reason reference data | one row per return reason |
+| return_requests | 1603 | return requests initiated by customers | one row per return request |
+| segment_memberships | 16461 | customer membership in segments | one row per customer-segment membership |
+| session_channels | 100000 | derived or curated acquisition channel per session | one row per session |
 | session_events | 292903 | instrumented event stream for onsite funnel behavior | one row per session event |
-| sessions |  | browsing or app sessions | one row per session |
-| shipments |  | shipment and delivery records for orders | one row per shipment |
-| shipping_carriers |  | carrier reference data | one row per shipping carrier |
-| shipping_methods |  | shipping service or method reference data | one row per shipping method |
+| sessions | 100000 | browsing or app sessions | one row per session |
+| shipments | 32089 | shipment and delivery records for orders | one row per shipment |
+| shipping_carriers | 3 | carrier reference data | one row per shipping carrier |
+| shipping_methods | 3 | shipping service or method reference data | one row per shipping method |
 
 
 ## B. Per-Column Notes
@@ -131,6 +131,7 @@
 - `orders` uses both `payment_status` and `status`, which means structurally valid joins still require semantic care when defining business outcomes or filtering conversions.
 
 ## D. ER Diagram
+
 erDiagram
     customers          ||--o{ orders : places
     orders             ||--|{ order_items : contains
@@ -148,7 +149,7 @@ erDiagram
     sessions           ||--o{ attribution_touches : has
     attribution_touches }o--o| attribution_campaigns : maps_via_bridge
     attribution_campaigns }o--|| marketing_campaigns : refs
-
+    
 ## E. Five Things That Surprised Me
 
 - `orders.status` and `orders.payment_status` are doing two different jobs, and that is easy to miss if you move too fast. From the distributions, `payment_status` is basically the conversion outcome, while `status` tracks where the order is in the fulfillment lifecycle. That matters because using `status = 'paid'` as a proxy for successful payment would be logically wrong in some analyses. My rule is to use `payment_status` for conversion logic and `status` for operational or fulfillment logic.

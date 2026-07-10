@@ -1,59 +1,77 @@
--- Q6: Payment Failure Rate by Payment Method
--- Owner: Prathamesh D S  |  Last updated: 2026-06-29
--- Business question: Which payment methods fail most often, and what error code is most responsible?
--- Sanity check: failure_rate stays between 0 and 1; successful_payments + failed_payments = attempts for every payment method.
+-- Q6: Payment Failure Analysis (Method × Top Error Code)
+-- Business Question: Which payment methods fail most frequently, and what is the primary reason for those failures?
+-- Owner: Prathamesh D S
+-- Last Updated: 2026-07-10
+-- Sanity Check:
+-- 1. failure_rate is between 0 and 1.
+-- 2. top_error_share_of_failures is between 0 and 1.
+-- 3. failures <= attempts for every payment method.
 
-with payment_attempts as (
+with payment_summary as (
     select
-        pm.method_name as payment_method
-      , pt.txn_id
-      , lower(pt.status) as transaction_status
-      , coalesce(pt.error_code, 'unknown') as error_code
-    from ecom.payment_transactions pt
+        pm.method_name                                            as payment_method
+      , count(*)                                                  as attempts
+      , count(*) filter (
+            where pt.status = 'failed'
+              and pt.error_code is not null
+        )                                                         as failures
+    from ecom.payment_methods pm
     join ecom.payment_intents pi
-        on pt.payment_intent_id = pi.payment_intent_id
-    join ecom.payment_methods pm
-        on pi.payment_method_id = pm.payment_method_id
+        on pm.payment_method_id = pi.payment_method_id
+    join ecom.payment_transactions pt
+        on pi.payment_intent_id = pt.payment_intent_id
+    group by
+        pm.method_name
 )
 
-, payment_method_summary as (
+, payment_error_ranking as (
     select
-        pa.payment_method
-      , count(*) as attempts
-      , count(*) filter (
-            where pa.transaction_status = 'succeeded'
-        ) as successful_payments
-      , count(*) filter (
-            where pa.transaction_status = 'failed'
-        ) as failed_payments
-    from payment_attempts pa
-    group by 1
-)
-
-, payment_method_errors as (
-    select
-        pa.payment_method
-      , pa.error_code as top_error_code
-      , count(*) as top_error_count
+        pm.method_name                                            as payment_method
+      , pt.error_code
+      , pt.error_message
+      , count(*)                                                  as error_count
       , row_number() over (
-            partition by pa.payment_method
-            order by count(*) desc, pa.error_code
-        ) as rn
-    from payment_attempts pa
-    where pa.transaction_status = 'failed'
-    group by 1, 2
+            partition by pm.method_name
+            order by count(*) desc
+        )                                                         as rn
+    from ecom.payment_methods pm
+    join ecom.payment_intents pi
+        on pm.payment_method_id = pi.payment_method_id
+    join ecom.payment_transactions pt
+        on pi.payment_intent_id = pt.payment_intent_id
+    where pt.status = 'failed'
+      and pt.error_code is not null
+    group by
+        pm.method_name
+      , pt.error_code
+      , pt.error_message
+)
+
+, payment_failure_analysis as (
+    select
+        ps.payment_method
+      , ps.attempts
+      , ps.failures
+      , ps.failures * 1.0
+            / nullif(ps.attempts, 0)                              as failure_rate
+      , per.error_code                                            as top_error_code
+      , per.error_message                                         as top_error_message
+      , per.error_count * 1.0
+            / nullif(ps.failures, 0)                              as top_error_share_of_failures
+    from payment_summary ps
+    left join payment_error_ranking per
+        on ps.payment_method = per.payment_method
+       and per.rn = 1
 )
 
 select
-    pms.payment_method
-  , pms.attempts
-  , pms.successful_payments
-  , pms.failed_payments
-  , pms.failed_payments * 1.0 / nullif(pms.attempts, 0) as failure_rate
-  , pme.top_error_code
-  , pme.top_error_count
-from payment_method_summary pms
-left join payment_method_errors pme
-    on pms.payment_method = pme.payment_method
-   and pme.rn = 1
-order by failure_rate desc, attempts desc;
+    payment_method
+  , attempts
+  , failures
+  , failure_rate
+  , top_error_code
+  , top_error_message
+  , top_error_share_of_failures
+from payment_failure_analysis
+order by
+    failure_rate desc;
