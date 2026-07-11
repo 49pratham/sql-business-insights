@@ -1,1 +1,1 @@
-https://app.notion.com/p/What-10-SQL-Queries-Told-Me-About-This-Business-3998b81707fa803f80e8e970b4746257?source=copy_link
+https://gamy-jute-e0b.notion.site/What-10-SQL-Queries-Told-Me-About-This-Business-3998b81707fa8062b97ae5c35dda915a?source=copy_link

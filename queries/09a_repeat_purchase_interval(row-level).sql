@@ -2,7 +2,7 @@
 -- Business Question:
 -- How long does it take for customers to place
 -- their next order?
----- Owner: Prathamesh D S
+-- Owner: Prathamesh D S
 -- Last Updated: 2026-07-10
 -- Notes:
 -- 1. Cancelled orders are excluded.

@@ -2,7 +2,7 @@
 -- Business Question:
 -- How long does it take customers to return,
 -- and when should win-back campaigns be sent?
----- Owner: Prathamesh D S
+-- Owner: Prathamesh D S
 -- Last Updated: 2026-07-10
 -- Notes:
 -- 1. Last order per customer is excluded from

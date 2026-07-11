@@ -15,6 +15,9 @@
 -- 2. Refunds are recorded at the order level.
 -- 3. Refund amounts are allocated
 --    proportionally based on line-item value.
+-- 4. Returns are therefore measured at the variant level
+--    and may include returns originating from orders outside
+--    the paid/non-cancelled subset.
 
 with product_revenue as (
     select

@@ -12,7 +12,7 @@ This project simulates the type of work a Business Analyst, Product Analyst, or 
 
 **What 10 SQL Queries Told Me About This Business**
 
-[[Click Here](https://app.notion.com/p/What-10-SQL-Queries-Told-Me-About-This-Business-3998b81707fa8062b97ae5c35dda915a?source=copy_link)]
+[[Click Here](https://gamy-jute-e0b.notion.site/What-10-SQL-Queries-Told-Me-About-This-Business-3998b81707fa8062b97ae5c35dda915a?source=copy_link)]
 
 The case study summarizes the major findings from the analysis and presents them as a memo to a hypothetical founder.
 
@@ -84,7 +84,8 @@ SQL-BUSINESS-INSIGHTS
 │   ├── 06_payment_failure_rate.sql
 │   ├── 07_delivery_sla_breach.sql
 │   ├── 08_customer_ltv_bucket_share.sql
-│   ├── 09_repeat_purchase_interval.sql
+│   ├── 09a_repeat_purchase_interval(row-level).sql
+|   ├── 09b_repeat_purchase_interval(summary).sql
 │   └── 10_attribution_first_vs_last.sql
 │
 ├── INTERPRETATIONS.md
@@ -333,4 +334,4 @@ Aspiring Data Analyst focused on SQL, Product Analytics, and Business Intelligen
 LinkedIn: [Prathamesh D S](https://www.linkedin.com/in/prathameshds/)
 
 Case Study:
-[What 10 SQL Queries Told Me About This Business](https://app.notion.com/p/What-10-SQL-Queries-Told-Me-About-This-Business-3998b81707fa8062b97ae5c35dda915a?source=copy_link)
+[What 10 SQL Queries Told Me About This Business](https://gamy-jute-e0b.notion.site/What-10-SQL-Queries-Told-Me-About-This-Business-3998b81707fa8062b97ae5c35dda915a?source=copy_link)
