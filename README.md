@@ -231,7 +231,6 @@ The analysis surfaced several issues that would require attention before product
 - Predominantly single-touch attribution journeys
 - Several tables were sparsely populated or partially unused
 
-Real analytics projects usually spend as much time finding data issues as answering business questions. Databases have an almost supernatural ability to become messy the moment humans interact with them.
 
 ---
 
